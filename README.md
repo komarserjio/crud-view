@@ -8,17 +8,19 @@ This project is in very very early stage of development, do not use it productio
 Usage
 =====
 
-1) make sure to follow the normal CRUD install settings
+1) Make sure to follow the normal CRUD install settings.
 
-2) add ``Plugin::load('CrudView');`` and  ``Plugin::load('BootstrapUI');`` in your ``app/config/bootstrap.php``
+2) Install this plugin using `composer require --prefer-dist friendsofcake/crud-view:~dev-master`.
 
-3) change ``AppController::$viewClass`` to ``CrudView\View\CrudView``
+2) Add `Plugin::load('CrudView');` and  `Plugin::load('BootstrapUI');` in your `app/config/bootstrap.php`.
 
-4) load the ``CrudView.View``, ``Crud.RelatedModels`` and ``Crud.Redirect`` listeners
+3) Change `AppController::$viewClass` to `CrudView\View\CrudView`.
 
-5) configure the ``FormHelper`` to look like below
+4) Load the `CrudView.View`, `Crud.RelatedModels` and `Crud.Redirect` listeners.
 
-6) hopefully going to ``/<your controller with crud enabled/`` should just work
+5) Update your `AppView` as per instructions provided in `BootstrapUI`'s readme.
+
+6) Hopefully going to `/<your controller with crud enabled/` should just work.
 
 Example controller
 ==================
@@ -28,7 +30,7 @@ Example controller
 namespace App\Controller;
 
 use Cake\Controller\Controller;
-use Crud\Controller;
+use Crud\Controller\ControllerTrait;
 
 class AppController extends Controller
 {
@@ -37,6 +39,10 @@ class AppController extends Controller
     public function initialize()
     {
         parent::initialize();
+
+        $this->loadComponent('RequestHandler');
+        $this->loadComponent('Flash');
+        
         $this->viewClass = 'CrudView\View\CrudView';
         $this->loadComponent('Crud.Crud', [
             'actions' => [
