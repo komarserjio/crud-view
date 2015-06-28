@@ -18,9 +18,7 @@ Usage
 
 4) Load the `CrudView.View`, `Crud.RelatedModels` and `Crud.Redirect` listeners.
 
-5) Update your `AppView` as per instructions provided in `BootstrapUI`'s readme.
-
-6) Hopefully going to `/<your controller with crud enabled/` should just work.
+5) Hopefully going to `/<your controller with crud enabled/` should just work.
 
 Example controller
 ==================
